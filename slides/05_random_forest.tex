@@ -4,18 +4,89 @@
 
 \begin{frame}
 \frametitle{Random Forest}
-\begin{table}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
+%\begin{table}
+%\begin{tabular}{l l l}
+%\toprule
+%\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+%\midrule
+%Treatment 1 & 0.0003262 & 0.562 \\
+%Treatment 2 & 0.0015681 & 0.910 \\
+%Treatment 3 & 0.0009271 & 0.296 \\
+%\bottomrule
+%\end{tabular}
+%\caption{Table caption}
+%\end{table}
+
+An ensemble of randomly trained decision trees, so in other words 
+random forest was defined by L. Breiman:
+\vspace{1ex}
+
+\begin{theorem}
+	A random forest is a classifier consisting of a collection of tree-structured classifiers ${\hat{T}_{\theta_{b}}(\textbf{x})}, b = 1,...,B$ where the $\theta_{b}$ are independent identically
+	distributed random vectors and each tree casts a unit vote for the most popular class at input $\textbf{x}$ .
+\end{theorem}
+\vspace{4ex}
+
+Random Forest is an extension and improvement over bagging:
+\begin{enumerate}
+\item Like in bagging, multiple decision trees are built
+\item Improvement: an injection of randomness is made
+\end{enumerate}
+
 \end{frame}
 
 %------------------------------------------------
+
+\begin{frame}
+\frametitle{Random Forest: randomness in the model}
+
+Two key concepts that makes decision forest "random" are:
+\begin{enumerate}
+	\item Random sampling of training data points when building trees
+	\item Random subsets of features considered when splitting nodes. Recommended number of variables:
+	\begin{enumerate}[a]
+	    \item For classification:  $\lfloor{\sqrt{n}} \rfloor$
+	    \item For regression: $\lfloor \frac{n}{3} \rfloor$
+	\end{enumerate}
+\end{enumerate}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Random Forest: algorithm}
+
+\begin{algorithm}[H]
+\SetAlgoLined
+\begin{enumerate}
+	\item For $b$ = 1 to $B$:
+	\begin{enumerate}[a]
+	    \item Draw a bootstrap sample $\theta_{b}$ of size N from the training data.
+	    \item Grow the Random Forest tree ${{T}_{\theta_{b}}}$ to the bootstrapped data, by recursively repeating the following steps for each terminal node of the tree, until the minimum node size $n_{min}$ is reached:
+	    \begin{enumerate}[i]
+	       \item Select $m$ variables at random from the $n$ variables
+	       \item Pick the best variable/split-point among the $m$
+	       \item  Split the node into two daughter nodes
+	    \end{enumerate}
+	\end{enumerate}
+	\item  Output the ensemble of trees $\{{T}_{\theta_{b}}\}_{1}^{B}$
+\end{enumerate}
+ \caption{Random Forest for Regression or Classification}
+\end{algorithm}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
