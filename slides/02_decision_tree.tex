@@ -2,15 +2,16 @@
 
 \begin{frame}
 	\frametitle{Decision Tree: Example}
-	\begin{center}		
+	\begin{figure}		
 		\includegraphics[height=0.7\textheight]{images/decision_tree_example.png}
-	\end{center}
+		\caption{Source:\cite{james2013learning} }
+	\end{figure}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Decision Tree: Tree Building Process}
 	A tree is grown starting from the root node by repeatedly 
-	using the following steps on each node (also called binary splitting):
+	using the following steps on each node (also called binary splitting) \cite{breiman1984classification}:
 	\begin{enumerate}
 		\item[(i)] \textbf{Find best split \(s\) for each feature \(X_{m}\):}
 		For each feature \(X_{m}\), there exist \(K-1\)-many potiential splits whereas \(K\) is the number of different values for the respective feature.
