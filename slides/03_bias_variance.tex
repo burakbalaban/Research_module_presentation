@@ -3,16 +3,21 @@
 
 \begin{frame}
     \frametitle{Expected Generalization Error}
-    Let $D = \{(x_{1},y_{1}), (x_{2}, y_{2}), ... , (x_{N}, y_{N})\}$ and  $y = f(x) + \epsilon$. \\
-       
+    Let 
+    \begin{center}
+        $y = f(x) + \epsilon$ \\
+        and\\
+        $D = \{(x_{1},y_{1}), (x_{2}, y_{2}), ... , (x_{N}, y_{N})\}$
+    \end{center}   
     The decomposition of a model's expected generalization error is
     \begin{equation}
-        \boldsymbol{Err}(f(x)) = Noise(x) + [Bias(\hat{f}(x))]^2 + Var(\hat{f}(x))
+        \boldsymbol{Err}(\hat{f}(x)) = \sigma_{\epsilon}^2(x) + [Bias(\hat{f}(x))]^2 + Var(\hat{f}(x))
     \end{equation}
     
-    $Noise$ is irreducible and independent of the model. \\
-    There is a trade-off between $bias^2$ and variance. \\
-    Adjusting parameters to decrease variance increases $bias^2$ and vice versa.
+    $\sigma_{\epsilon}^2(x)$ is irreducible and independent of the model. \\
+    \bigskip
+    Trade-off between bias and variance. \\
+    \textbf{Aim:} Adjusting parameters to decrease variance keeping bias unaffected.
 \end{frame}
 
 \begin{frame}
