@@ -17,19 +17,21 @@
 %\caption{Table caption}
 %\end{table}
 
-An ensemble of randomly trained decision trees, so in other words 
-random forest was defined by L. Breiman:
+
 \vspace{1ex}
 
-\begin{theorem}
+
+\begin{definition}[by L.Breiman]
 	A random forest is a classifier consisting of a collection of tree-structured classifiers ${\hat{T}_{\theta_{b}}(\textbf{x})}, b = 1,...,B$ where the $\theta_{b}$ are independent identically
 	distributed random vectors and each tree casts a unit vote for the most popular class at input $\textbf{x}$ .
-\end{theorem}
+\end{definition}
 \vspace{4ex}
 
 Random Forest is an extension and improvement over bagging:
+\vspace{1ex}
 \begin{enumerate}
 \item Like in bagging, multiple decision trees are built
+\vspace{1ex}
 \item Improvement: an injection of randomness is made
 \end{enumerate}
 
@@ -41,11 +43,15 @@ Random Forest is an extension and improvement over bagging:
 \frametitle{Random Forest: randomness in the model}
 
 Two key concepts that makes decision forest "random" are:
+\vspace{1ex}
 \begin{enumerate}
 	\item Random sampling of training data points when building trees
+\vspace{1ex}
 	\item Random subsets of features considered when splitting nodes. Recommended number of variables:
+\vspace{1ex}
 	\begin{enumerate}[a]
 	    \item For classification:  $\lfloor{\sqrt{n}} \rfloor$
+\vspace{1ex}
 	    \item For regression: $\lfloor \frac{n}{3} \rfloor$
 	\end{enumerate}
 \end{enumerate}
