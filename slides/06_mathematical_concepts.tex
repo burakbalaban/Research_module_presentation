@@ -84,7 +84,7 @@
 
 \begin{frame}[t]
     \frametitle{Mathematical Concept}
-    \framesubtitle{Bayes Error}
+    \framesubtitle{Residual Error}
     \onslide<1->{    
         \begin{block}{}
         \begin{center}
@@ -95,27 +95,41 @@
         \end{center}
         \end{block}
     }
+    \bigbreak
     \onslide<2->{
-        Theoretically, there exists a model that minimizes 
-        the generalization error and can be derived analitically 
-        independent of the model \cite{louppe2014understanding}.\\
-        Conditioning the expected generalization error on X gives:
-        \begin{center}
-            $\mathbb{E}_{X,Y} \{L(Y, \phi_{\beta}(X))\} = \mathbb{E}_{X}\{\mathbb{E}_{Y|X}\{L(Y, \phi_{\beta}(X)) \} \}$
-        \end{center}
+        \quad Theoretically, given the probability distribution of P(X,Y)\\
+        \quad Bayes Model $\phi_{\beta}$ i.e the best possible model can be derived\\
+        \quad and $\boldsymbol{Err}(\phi_{\beta})$ can be calculated \cite{louppe2014understanding}.\\
     }
+    \bigbreak
     \onslide<3->{
-        Point-wise minimization of inner term yields:
-        \begin{center}
-            $\phi_{\beta} = \underset{c \in Y}{argmin} \; \mathbb{E}_{Y|X=x}\{L(Y,c)\}$
-        \end{center}
+        \quad For comparison of $\boldsymbol{Err}(T_{D,\theta}(X))$ and $\boldsymbol{Err}(\boldsymbol{RF}_{D, \Theta}(X))$\\
+        \quad the residual error is the same.\\
     }
-    \vspace{-2mm}
-    \onslide<4->\quad Bayes Model $\phi_{\beta}$ is best attainable model.\\
-    \smallbreak
-    \onslide<5->\quad $\boldsymbol{Err}(\phi_{\beta}(X))$ is the irreducible error.\\
-    \smallbreak
-    \onslide<6->\quad \textbf{Result:} Ensembling has no effect on Bayes Error.
+    \bigbreak
+    \onslide<4->\quad \textbf{Result:} Ensembling has no effect on Bayes Error.
+
+    %\onslide<2->{
+    %    Theoretically, there exists a model that minimizes 
+    %    the generalization error and can be derived analitically 
+    %    independent of the model \cite{louppe2014understanding}.\\
+    %    Conditioning the expected generalization error on X gives:
+    %    \begin{center}
+    %        $\mathbb{E}_{X,Y} \{L(Y, \phi_{\beta}(X))\} = \mathbb{E}_{X}\{\mathbb{E}_{Y|X}\{L(Y, \phi_{\beta}(X)) \} \}$
+    %    \end{center}
+    %}
+    %\onslide<3->{
+    %    Point-wise minimization of inner term yields:
+    %    \begin{center}
+    %        $\phi_{\beta} = \underset{c \in Y}{argmin} \; \mathbb{E}_{Y|X=x}\{L(Y,c)\}$
+    %    \end{center}
+    %}
+    %\vspace{-2mm}
+    %\onslide<4->\quad Bayes Model $\phi_{\beta}$ is best attainable model.\\
+    %\smallbreak
+    %\onslide<5->\quad $\boldsymbol{Err}(\phi_{\beta}(X))$ is the irreducible error.\\
+    %\smallbreak
+    %\onslide<6->\quad \textbf{Result:} Ensembling has no effect on Bayes Error.
 \end{frame}
 
 \begin{frame}[t]
@@ -130,8 +144,10 @@
                 \semitransp{+ Var(\boldsymbol{RF}_{D, \Theta}(X))}$
             \end{center}
         \end{block}
+    \center{With Squared Loss Function: 
+            $L(Y,T_{D,\theta}(X))=\mathbb{E}_{D}\{(Y-T_{D,\theta}(X))^2\}$
+            }
     }
-    \vspace{1cm}
     \onslide<2->{
         \begin{block}{$Bias^2$ of Tree}
             \begin{center}
@@ -139,35 +155,43 @@
             \end{center}
         \end{block}
     }
-    \vspace{0.5cm}
     \onslide<3->{
         \begin{block}{$Bias^2$ of Random Forest}
             \begin{center}
                 $[Bias(\boldsymbol{RF}_{D, \Theta}(X))]^2 
                 = (\phi_{\beta}(X) - \mathbb{E}_{D,\Theta}\{\boldsymbol{RF}_{D, \Theta}(X))\})^2$ 
             \end{center}
-    }
-        \onslide<4->\center{{We need $\mathbb{E}_{D,\Theta}\{\boldsymbol{RF}_{D, \Theta}(X))\}$.}}
         \end{block}
+    }
+    \onslide<4->\center{
+    We need $\mathbb{E}_{D,\theta}\{T_{D, \theta}(X))\}$ and 
+    $\mathbb{E}_{D,\Theta}\{\boldsymbol{RF}_{D, \Theta}(X))\}$ for comparison.}
+
 \end{frame}
 
-\begin{frame}[t]
+\begin{frame}[c]
     \frametitle{Mathematical Concept}
-    \framesubtitle{Bias: The Expected Value of Random Forest}
+    \framesubtitle{Bias: The Expected Value}
     \onslide<1->{
-    Random Forest Estimator for regression shares the same idea with soft-voting classification;
-    \begin{align*}
-        \boldsymbol{RF}_{D, \Theta}(X) = \dfrac{1}{B}\sum_{b = 1}^{B}T_{D,\theta_{b}}(X)
-    \end{align*}
+        We can define $\mathbb{E}_{D}\{T_{D,\theta}(X)\} = \mu_{D,\theta}(X)$\\
+    }
+    \bigbreak
+    \onslide<1->{
+        Random Forest Estimator for regression is;
+        \vspace{-3mm}
+        \begin{align*}
+            \boldsymbol{RF}_{D, \Theta}(X) = \dfrac{1}{B}\sum_{b = 1}^{B}T_{D,\theta_{b}}(X)
+        \end{align*}
     }
     \onslide<2->{Taking expectation gives;}
-    \begin{align*}
-        \onslide<2->\mathbb{E}_{D, \Theta}\{\boldsymbol{RF}_{D, \Theta}(X) \} 
-        & = \mathbb{E}_{D, \Theta}\{\dfrac{1}{B}\sum_{b = 1}^{B}T_{D,\theta_{b}}(X)\}  \\
-        \onslide<3->& = \dfrac{1}{B}\sum_{b=1}^{B}\mathbb{E}_{D,\theta_{b}}\{T_{D, \theta_{b}}(X)\} \\
-        \onslide<4->& = \mu_{D,\hat{\theta}}(X)
-    \end{align*}
-    \onslide<4->{where $\mu_{D,\hat{\theta}}(X)$ is the average prediction of all ensembled trees.}
+        \vspace{-5mm}
+        \begin{align*}
+            \onslide<2->\mathbb{E}_{D, \Theta}\{\boldsymbol{RF}_{D, \Theta}(X) \} 
+            & = \mathbb{E}_{D, \Theta}\{\dfrac{1}{B}\sum_{b = 1}^{B}T_{D,\theta_{b}}(X)\}  \\
+            \onslide<3->& = \dfrac{1}{B}\sum_{b=1}^{B}\mathbb{E}_{D,\theta_{b}}\{T_{D, \theta_{b}}(X)\} 
+            & \text{($\theta_{i} \overset{d}{=}\theta_{j}$ $\forall i$,$j\in B$)}\\
+            \onslide<4->& = \mu_{D,\theta}(X)
+        \end{align*}
 \end{frame}
 
 \begin{frame}[t]
@@ -184,17 +208,17 @@
     \vspace{0.5cm}
     \begin{block}{$Bias^2$ of Tree}        
         \begin{center}
-            $[Bias(T_{D,\theta})(X)]^2 = (\phi_{\beta}(X) - \mathbb{E}_{D}\{T_{D,\theta}(X)\})^2$
+            $[Bias(T_{D,\theta})(X)]^2 = (\phi_{\beta}(X) - \mu_{D,\theta}(X)\})^2$
         \end{center}
     \end{block}
     \bigbreak
     \begin{block}{$Bias^2$ of a Random Forest}
         \begin{center}
-            $[Bias(\boldsymbol{RF}_{D,\Theta})(X)]^2 = (\phi_{\beta}(X) - \mu_{D,\hat{\theta}}(X))^2$
+            $[Bias(\boldsymbol{RF}_{D,\Theta})(X)]^2 = (\phi_{\beta}(X) - \mu_{D,\theta}(X))^2$
         \end{center}
     \end{block}
     \bigbreak
-    \onslide<2->{\textbf{Result:} Ensembling trees does not necessarily decrease $Bias^2$.}
+    \onslide<2->{\textbf{Result:} Ensembling trees has no effect on bias.}
 \end{frame}
 \begin{frame}[t]
     \frametitle{Mathematical Concept}
@@ -210,30 +234,22 @@
         \end{block}
     }
     \onslide<2->{
-        For any two trees $T_{D,\theta'}$ and $T_{D,\theta''}$ trained with the same data $D$
-        and different growing parameters $\theta'$ and $\theta''$, 
+        $\forall T_{D,\theta'}$,$T_{D,\theta''}$ such that  $\theta' \neq \theta''$,\\
         we can define the correlation coefficient as follows
         \begin{center}
             $\rho(X)
             = \dfrac{\mathbb{E}_{D,\theta',\theta''}\{T_{D,\theta'}(X) T_{D,\theta''}(X)\} 
             - \mu_{D,\theta}^2(X)}{\sigma_{D,\theta}^2(X)}$
         \end{center}
+        \quad where $\sigma_{D,\theta}^2(X) = \mathbb{V}_{D,\theta}\{T_{D,\theta}(X)\}$.
     }
+    \bigbreak
     \onslide<3->{
-       \begin{columns}[t]
-        \column{.45\textwidth}
-            $\rho(X)$ is close to 1
-            \begin{itemize}
-                \item Highly correlated trees.\\
-                \item Randomization has no significant effect.
-            \end{itemize}
-        \column{.5\textwidth}
-            $\rho(X)$ is close to 0\\
-            \begin{itemize}
-                \item Non-correlated trees\\
-                \item Trees are perfectly random.
-            \end{itemize}
-        \end{columns}
+        \begin{itemize}
+        \item Highly correlated trees $\implies$ $\rho(X)$ is close to 1\\
+        \bigbreak
+        \item Non-correlated trees $\implies$ $\rho(X)$ is close to 0
+    \end{itemize}
     }
 \end{frame}
 \begin{frame}[t]
@@ -260,7 +276,7 @@
     }
     \bigbreak
     \onslide<3->{
-        \quad As $B \rightarrow \infty$, $\mathbb{V}\{\boldsymbol{RF}_{D, \Theta}(X) \}$ 
+        \quad As $B \rightarrow \infty$, $\mathbb{V}_{D,\Theta}\{\boldsymbol{RF}_{D, \Theta}(X) \}$ 
         converges to $\rho(X)\sigma^2_{D,\theta}(X)$.
     }
     \bigbreak
@@ -268,9 +284,9 @@
         \quad Due to randomization $\rho(X) < 1$
         \begin{block}{}
             \center{
-                $\implies \mathbb{V}\{\boldsymbol{RF}_{D, \Theta}(X) \}
+                $\implies \mathbb{V}_{D,\Theta}\{\boldsymbol{RF}_{D, \Theta}(X) \}
                 = \rho(x)\sigma^2_{D,\theta}(X)
-                < \sigma^2_{D,\theta}(X) = \mathbb{V}\{T_{D,\theta}(X)\} $.
+                < \sigma^2_{D,\theta}(X) = \mathbb{V}_{D,\theta} \{T_{D,\theta}(X)\} $.
             }
         \end{block}
     }
