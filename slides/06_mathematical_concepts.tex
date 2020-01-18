@@ -189,7 +189,7 @@
             \onslide<2->\mathbb{E}_{D, \Theta}\{\boldsymbol{RF}_{D, \Theta}(X) \} 
             & = \mathbb{E}_{D, \Theta}\{\dfrac{1}{B}\sum_{b = 1}^{B}T_{D,\theta_{b}}(X)\}  \\
             \onslide<3->& = \dfrac{1}{B}\sum_{b=1}^{B}\mathbb{E}_{D,\theta_{b}}\{T_{D, \theta_{b}}(X)\} 
-            & \text{($\theta_{i} \overset{d}{=}\theta_{j}$ $\forall i$,$j\in B$)}\\
+            & \text{($\theta$'s are i.i.d.)}\\
             \onslide<4->& = \mu_{D,\theta}(X)
         \end{align*}
 \end{frame}
@@ -264,8 +264,6 @@
                 \nontransp{Var(\boldsymbol{RF}_{D, \Theta}(X))}$
             \end{center}
         \end{block}
-    }
-    \onslide<2->{
         \begin{block}{Variance of Random Forest}
             \begin{center}
                 $\mathbb{V}_{D, \Theta}\{
@@ -275,12 +273,12 @@
         \end{block}
     }
     \bigbreak
-    \onslide<3->{
+    \onslide<2->{
         \quad As $B \rightarrow \infty$, $\mathbb{V}_{D,\Theta}\{\boldsymbol{RF}_{D, \Theta}(X) \}$ 
         converges to $\rho(X)\sigma^2_{D,\theta}(X)$.
     }
     \bigbreak
-    \onslide<4->{
+    \onslide<3->{
         \quad Due to randomization $\rho(X) < 1$
         \begin{block}{}
             \center{
@@ -291,7 +289,7 @@
         \end{block}
     }
     \bigbreak
-    \onslide<5->{
+    \onslide<4->{
         \quad \textbf{Result:}Ensembling trees decreases the variance.
     }
 \end{frame}
