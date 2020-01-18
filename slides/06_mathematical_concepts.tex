@@ -7,11 +7,12 @@
         $T_{D,\theta}$ is a fully grown tree trained on set $D$ with using parameters $\theta$.\\
         Random Forest estimate of an observation $x^*$ is
     }
+    \smallbreak
     \onslide<2->{
         \begin{block}{Majority Voting}
                 \begin{center}
                     $\boldsymbol{RF}_{D, \theta_{1}, \theta_{2}, ..., \theta_{B}} (x^*) =
-                    \underset{c \in Y}{argmax} \sum_{b = 1}^{B}{1(\hat{T}_{b}(x^*) = c)}$
+                    \underset{c \in Y}{argmax} \sum_{b = 1}^{B}{\mathds{1}(\hat{T}_{b}(x^*) = c)}$
                 \end{center}
             \end{block}
     }
@@ -234,8 +235,8 @@
         \end{block}
     }
     \onslide<2->{
-        $\forall T_{D,\theta'}$,$T_{D,\theta''}$ such that  $\theta' \neq \theta''$,\\
-        we can define the correlation coefficient as follows
+        $\forall T_{D,\theta'}$,$T_{D,\theta''}$ such that  $\theta' \neq \theta''$,
+        the correlation coefficient can be written as follows
         \begin{center}
             $\rho(X)
             = \dfrac{\mathbb{E}_{D,\theta',\theta''}\{T_{D,\theta'}(X) T_{D,\theta''}(X)\} 
@@ -290,7 +291,7 @@
     }
     \bigbreak
     \onslide<4->{
-        \quad \textbf{Result:}Ensembling trees decreases the variance.
+        \quad \textbf{Result:} Ensembling trees decreases the variance.
     }
 \end{frame}
 %\begin{frame}

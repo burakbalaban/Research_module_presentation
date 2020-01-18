@@ -5,15 +5,14 @@
     \frametitle{Bias Variance Trade-off}
     \framesubtitle{The Expected Generalization Error}
     \onslide<1->{
-        \begin{center}
             $y = f(x) + \epsilon$ and 
             $\epsilon \sim \mathcal{N}(0,\sigma_{\epsilon}^2)$\\
             \smallbreak
             Estimate of $f(x)$:$\quad \hat{f}(x)$\\
             \smallbreak
-            The expected generalization error: $\boldsymbol{Err}(\hat{f}(x))$
-        \end{center}
+            The expected generalization error: $\boldsymbol{Err}(\hat{f}(x))$ \\
     }
+    \bigbreak
     \onslide<2->{
         The decomposition of a model's expected generalization error is
         \begin{block}{}
@@ -35,16 +34,12 @@
 \begin{frame}
     \frametitle{Bias-Variance Trade-off}
     \framesubtitle{Illustration}
-    \onslide<1->
-        \begin{figure}      
-            \includegraphics[height=0.6\textheight]{images/bias-variance.png}
-            \caption{Illustration of bias-variance trade-off \cite{van2019bias}}
-        \end{figure}
-    \onslide<2->{
-        \begin{center}
-        Decision trees generally have low bias and high variance \cite{friedman2001elements}.
-        \end{center}
-    }
+    \begin{figure}      
+        \includegraphics[height=0.6\textheight]{images/bias-variance.png}
+    \end{figure}
+    \begin{center}
+    Decision trees generally have low bias and high variance.
+    \end{center}
 \end{frame}
 
     %\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment

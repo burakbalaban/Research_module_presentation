@@ -23,7 +23,7 @@
 
 \begin{definition}[by L.Breiman]
 	A random forest is a classifier consisting of a collection of tree-structured classifiers ${\hat{T}_{\theta_{b}}(\textbf{x})}, b = 1,...,B$ where the $\theta_{b}$ are independent identically
-	distributed random vectors and each tree casts a unit vote for the most popular class at input $\textbf{x}$ .
+	distributed random vectors and each tree casts a unit vote for the most popular class at input $\textbf{x}$.
 \end{definition}
 \vspace{4ex}
 
@@ -40,7 +40,8 @@ Random Forest is an extension and improvement over bagging:
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Random Forest: randomness in the model}
+\frametitle{Random Forest}
+\framesubtitle{Randomness in the model}
 
 Two key concepts that makes decision forest "random" are:
 \vspace{1ex}
@@ -60,11 +61,13 @@ Two key concepts that makes decision forest "random" are:
 \end{frame}
 
 \begin{frame}
-\frametitle{Random Forest: algorithm}
+\frametitle{Random Forest}
+\framesubtitle{Algorithm}
 
 \begin{algorithm}[H]
 \SetAlgoLined
 \begin{enumerate}
+	\bigbreak
 	\item For $b$ = 1 to $B$:
 	\begin{enumerate}[a]
 	    \item Draw a bootstrap sample $\theta_{b}$ of size N from the training data.
@@ -75,7 +78,8 @@ Two key concepts that makes decision forest "random" are:
 	       \item  Split the node into two daughter nodes
 	    \end{enumerate}
 	\end{enumerate}
-	\item  Output the ensemble of trees $\{{T}_{\theta_{b}}\}_{1}^{B}$
+	\item  Output the ensemble of trees $\{{T}_{\theta_{b}}\}_{b=1}^{B}$
+	\smallbreak
 \end{enumerate}
  \caption{Random Forest for Regression or Classification}
 \end{algorithm}

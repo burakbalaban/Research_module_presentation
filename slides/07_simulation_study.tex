@@ -1,21 +1,16 @@
 
 
 \section{Simulation Study}
+\frame{\sectionpage}
 \frametitle{Simulation Study}
-\begin{frame}
-    \begin{center}
-        \textbf{Simulation Study}
-    \end{center}
-\end{frame}
-
 \begin{frame}
     \frametitle{Simulation Study}
     \framesubtitle{Linear DGP}
     The linear DGP generates the data tuples \( (y, x_{1}, x_{2}, x_{3}) \) as follows:
 
-    \begin{equation}\label{eq:linear_dgp}
+    \begin{equation*}\label{eq:linear_dgp}
         y = \beta_{0} + \beta_{1} x_{1} + \beta_{2} x_{2} + \beta_{3} x_{3} + \epsilon,
-    \end{equation}
+    \end{equation*}
     
     whereas
     \begin{itemize}
@@ -39,14 +34,14 @@
     \framesubtitle{Non-Linear DGP}
     The non-linear DGP generates the data tuples \( (y, x_{1}, x_{2}) \) as follows:
 
-    \begin{equation}\label{eq:non_linear_dgp}
+    \begin{equation*}\label{eq:non_linear_dgp}
         y = \beta_{0} + \beta_{1} \mathds{1}(x_{1} \geq 0, x_{2} \geq 0) + \beta_{2} \mathds{1}(x_{1} \geq 0, x_{2} < 0) + \beta_{3} \mathds{1}(x_{1} < 0) + \epsilon,
-    \end{equation}
+    \end{equation*}
     
     whereas
     \begin{itemize}
         \item $ \irow{\beta_{0} & \beta_{1} & \beta_{2} & \beta_{3}} = \irow{0.3 & 5 & 10 & 15}$
-        \item $x_{1}, x_{2}, x_{3} \sim \mathcal{N}(0,\,3)$
+        \item $x_{1}, x_{2} \sim \mathcal{N}(0,\,3)$
         \item $\epsilon \sim \mathcal{N}(0,\,1)$
     \end{itemize}
     are the same as in the previous DGP.
