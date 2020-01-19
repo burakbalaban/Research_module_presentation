@@ -46,7 +46,7 @@
 \begin{frame}
     \frametitle{Mathematical Concept}
     \framesubtitle{The Expected Generalization Error of $\boldsymbol{T_{D,\theta}}$}
-        \onslide<1->{\quad Given $D = X \cup Y$,\\
+        \onslide<1->{\quad Given $D = (X, Y)$,\\
         \quad the expected generalization error of $T_{D,\theta}$ is
             \begin{align*}\label{eq:exp_gen_error}
                 \boldsymbol{Err}(T_{D,\theta}(X)) = \mathbb{E}_{X,Y}\{L(Y, T_{D,\theta}(X)) \}
@@ -84,7 +84,7 @@
     %                                        - T_{D,\theta}(x))^2\} = \sigma_{D,\theta}^2(x)
     %\end{align*}
 \end{frame}
-\subsection{Improvement}
+\subsection{Improvement over Decision Tree}
 \begin{frame}[t]
     \frametitle{Mathematical Concept}
     \framesubtitle{Residual Error}
@@ -211,13 +211,13 @@
     \vspace{0.5cm}
     \begin{block}{$Bias^2$ of Tree}        
         \begin{center}
-            $[Bias(T_{D,\theta})(X)]^2 = (\phi_{\beta}(X) - \mu_{D,\theta}(X)\})^2$
+            $[Bias(T_{D,\theta}(X))]^2 = (\phi_{\beta}(X) - \mu_{D,\theta}(X))^2$
         \end{center}
     \end{block}
     \bigbreak
     \begin{block}{$Bias^2$ of a Random Forest}
         \begin{center}
-            $[Bias(\boldsymbol{RF}_{D,\Theta})(X)]^2 = (\phi_{\beta}(X) - \mu_{D,\theta}(X))^2$
+            $[Bias(\boldsymbol{RF}_{D,\Theta}(X))]^2 = (\phi_{\beta}(X) - \mu_{D,\theta}(X))^2$
         \end{center}
     \end{block}
     \bigbreak
